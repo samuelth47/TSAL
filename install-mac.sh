@@ -32,6 +32,9 @@ else
 	brew install autoconf
 fi
 
+echo "Installing gcc..."
+brew install gcc
+
 echo "Installing automake..."
 brew install automake
 
@@ -40,6 +43,23 @@ brew install libtool
 
 echo "Installing portaudio..."
 brew install portaudio
+
+#Create symbolic links for g++ and gcc
+if brew list | grep -q 'gcc*'
+then
+        #check if gcc/g++ is installed in the right spot and create a sym links
+        if [ -e /usr/local/bin/g++ ] && [ -e /usr/local/bin/gcc ]
+        then
+                echo "Updating g++ and gcc links!"
+                rm /usr/local/bin/gcc
+                rm /usr/local/bin/g++
+        fi
+
+        #Create the g++ and gcc links
+        ln -s /usr/local/Cellar/gcc/${gccLatest}/bin/gcc-${gcc_version_header}* /usr/local/bin/gcc
+        ln -s /usr/local/Cellar/gcc/${gccLatest}/bin/g++-${gcc_version_header}* /usr/local/bin/g++
+fi
+
 
 echo
 echo "Installing TSAL..."
