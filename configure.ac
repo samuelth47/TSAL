@@ -14,7 +14,8 @@ AM_PROG_AR
 # Checks for programs.
 AC_PROG_CXX
 AC_PROG_CC
-AC_PROG_LIBTOOL
+LT_INIT
+#AC_PROG_LIBTOOL
 
 # Checks for libraries.
 AC_CHECK_LIB([portaudio], [PortAudio::Pa_GetVersion])

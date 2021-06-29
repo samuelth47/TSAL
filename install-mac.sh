@@ -5,10 +5,10 @@ if [ $? != 0 ]; then
 	echo "Installing homebrew..."
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-	export PATH=/usr/bin:$PATH
+	#export PATH=/usr/bin:$PATH
 else
 	echo "Homebrew detected"
-	export PATH=/usr/bin:$PATH
+	#export PATH=/usr/bin:$PATH
 fi
 
 echo
