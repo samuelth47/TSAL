@@ -1,4 +1,4 @@
-AM_CXXFLAGS = -Wall -I$(top_srcdir)/include -lportaudio
+AM_CXXFLAGS = -std=c++17 -Wall -I$(top_srcdir)/include -lportaudio
 AM_LDFLAGS = -L/usr/local/lib -lportaudio
 
 lib_LTLIBRARIES = libtsal.la

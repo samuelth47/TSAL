@@ -24,7 +24,7 @@ brew install autoconf
 # Check if the install worked, if not change the ownership of the directory
 # and try to install again
 if [ $? -eq 0 ]; then
-	continue
+	echo ""
 else
 	chmod u+w /usr/local/share/man/man8
 	sudo chown -R $(whoami) /usr/local/share/man/man8
@@ -43,6 +43,12 @@ brew install libtool
 
 echo "Installing portaudio..."
 brew install portaudio
+
+#check the latest version of gcc
+gccLatest=$(brew list --versions gcc | cut -f 2 -d ' ')
+gcc_version_header=$(brew list --versions gcc | cut -f 2 -d ' ' | cut -f 1 -d .)
+
+echo Latest gcc version ${gccLatest}
 
 #Create symbolic links for g++ and gcc
 if brew list | grep -q 'gcc*'
@@ -68,6 +74,8 @@ echo "Installing TSAL..."
 sudo autoreconf -vi
 
 ./configure
+
+sudo make clean
 
 make
 
